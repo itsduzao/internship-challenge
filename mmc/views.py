@@ -18,7 +18,7 @@ def calcular_mmc(request):
     if x <= 0 or y <= 0:
       return Response({'error': 'Os valores de x e y devem ser maiores que 0'}, status=status.HTTP_400_BAD_REQUEST)
     
-    result = lcm(range(x, y+1))
+    result = lcm(*range(x, y+1))
 
     return Response({'x': x, 'y': y, 'result': result}, status=status.HTTP_200_OK)
   except:
