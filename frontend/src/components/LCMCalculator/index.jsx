@@ -44,6 +44,7 @@ export const LCMCalculator = () => {
         [name]: value
       }));
       setError('');
+      setResult(null);
     }
   };
 
@@ -76,7 +77,7 @@ export const LCMCalculator = () => {
         throw new Error(data.error || 'Erro ao calcular MMC');
       }
 
-      setResult(data.resultado);
+      setResult(data.result);
     } catch (err) {
       setError(err.message || 'Erro ao comunicar com o servidor');
     } finally {
