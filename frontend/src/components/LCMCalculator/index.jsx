@@ -4,6 +4,7 @@ import { Card } from '../Card';
 import { Form, FormField } from '../Form';
 import { Button } from '../Button';
 import { Alert } from '../Alert';
+import { API_URL } from '../../config/api';
 
 export const LCMCalculator = () => {
   const [formData, setFormData] = useState({
@@ -60,7 +61,7 @@ export const LCMCalculator = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/calculadora/mmc/', {
+      const response = await fetch(`${API_URL}/calculadora/mmc/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
