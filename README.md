@@ -83,6 +83,22 @@ yarn dev
 
 O frontend estará rodando em `http://localhost:5173/`
 
+## 🔑 Variáveis de Ambiente
+
+### Backend (.env)
+```
+DEBUG=True
+SECRET_KEY=sua-chave-secreta
+ALLOWED_HOSTS=localhost,127.0.0.1
+CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+CORS_ALLOW_CREDENTIALS=True
+```
+
+### Frontend (.env)
+```
+VITE_API_URL=http://localhost:8000
+```
+
 ## 🛠️ Estrutura do Projeto
 
 ```
@@ -160,22 +176,6 @@ internship-challenge/
 - Verificação de números positivos
 - Validação do intervalo (x < y)
 - Validação de ausência de parâmetros
-
-## 🔑 Variáveis de Ambiente
-
-### Backend (.env)
-```
-DEBUG=True
-SECRET_KEY=sua-chave-secreta
-ALLOWED_HOSTS=localhost,127.0.0.1
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-CORS_ALLOW_CREDENTIALS=True
-```
-
-### Frontend (.env)
-```
-VITE_API_URL=http://localhost:8000
-```
 
 ## 🧪 Executando os Testes
 
