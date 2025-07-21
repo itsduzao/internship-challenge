@@ -1,7 +1,58 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 from .modules.lcm_range import lcm_range
+
+@swagger_auto_schema(
+    method='post',
+    request_body=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        required=['x', 'y'],
+        properties={
+            'x': openapi.Schema(
+                type=openapi.TYPE_INTEGER,
+                description='Primeiro número do intervalo (deve ser menor que y e maior que 0)'
+            ),
+            'y': openapi.Schema(
+                type=openapi.TYPE_INTEGER,
+                description='Segundo número do intervalo (deve ser maior que x e maior que 0)'
+            ),
+        }
+    ),
+    responses={
+        200: openapi.Response(
+            description='MMC calculado com sucesso',
+            schema=openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                properties={
+                    'x': openapi.Schema(type=openapi.TYPE_INTEGER),
+                    'y': openapi.Schema(type=openapi.TYPE_INTEGER),
+                    'result': openapi.Schema(type=openapi.TYPE_INTEGER),
+                }
+            )
+        ),
+        400: openapi.Response(
+            description='Erro de validação',
+            schema=openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                properties={
+                    'error': openapi.Schema(type=openapi.TYPE_STRING)
+                }
+            )
+        ),
+        500: openapi.Response(
+            description='Erro interno do servidor',
+            schema=openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                properties={
+                    'error': openapi.Schema(type=openapi.TYPE_STRING)
+                }
+            )
+        )
+    }
+)
 
 @api_view(['POST'])
 def calcular_mmc(request):
